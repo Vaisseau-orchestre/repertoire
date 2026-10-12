@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Écouter des extraits du répertoire du Vaisseau-orchestre</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 1rem; line-height: 1.5; color: #222; }
+    h1 { font-size: 1.5rem; }
+    .track { margin-bottom: 2rem; }
+    .track h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+    .track iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; }
+    .fallback { font-size: 0.9rem; margin-top: 0.25rem; }
+  </style>
+</head>
+<body>
+  <h1>Répertoire du Vaisseau-orchestre</h1>
+  <p>Cette page vous permet de découvrir le répertoire joué par le Vaisseau-orchestre. Il s'agit de compositions de Murray Gold pour la série anglaise Doctor Who (2005-2017). D'autres pièces seront ajoutées au fur et à mesure. Bonne écoute ! Dernière mise à jour : 11 octobre 2026.</p>
+
+  <main id="tracks"></main>
+
+  <script>
+    // Line to edit, to add new tracks 
+    const tracks = [
+      { title: "I am the Doctor", artist: "Murray Gold", id: "kqSlCCufDR4" },
+      { title: "This is Gallifrey", artist: "Murray Gold", id: "WUhsBKPNMWI" },
+      { title: "Voyage of the Damned (suite)", artist: "Murray Gold", id: "YU9R_DXSR7s" },
+      { title: "The Clouds pass", artist: "Murray Gold", id: "d6LK2oW_TZg" },
+      { title: "The Shepherd's boy", artist: "Murray Gold", id: "vAhnulFTYo8" }
+    ];
+
+    // Build one section per track
+    const container = document.getElementById("tracks");
+    tracks.forEach((t, i) => {
+      const section = document.createElement("section");
+      section.className = "track";
+      section.innerHTML = `
+        <h2>${i + 1}. ${t.title} – ${t.artist}</h2>
+        <iframe src="https://www.youtube-nocookie.com/embed/${t.id}"
+                title="${t.title} – ${t.artist}"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="encrypted-media; picture-in-picture; fullscreen"
+                allowfullscreen></iframe>
+        <p class="fallback">
+          <a href="https://www.youtube.com/watch?v=${t.id}" target="_blank" rel="noopener">Ouvrir sur YouTube</a>
+        </p>`;
+      container.appendChild(section);
+    });
+  </script>
+</body>
+</html>
