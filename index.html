@@ -8,11 +8,20 @@
     body { font-family: system-ui, sans-serif; max-width: 720px; margin: 0 auto; padding: 1rem; line-height: 1.5; color: #222; }
     h1 { font-size: 1.5rem; }
     .track { margin-bottom: 2rem; }
-    .track h2 { font-size: 1.1rem; margin: 0 0 0.5rem; }
+    .track h3 { font-size: 1.1rem; margin: 0 0 0.5rem; }
     .track iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; border-radius: 8px; }
     .fallback { font-size: 0.9rem; margin-top: 0.25rem; }
     .separator { margin: 2.5rem 0 1.5rem; padding-top: 1.5rem; border-top: 1px solid #ddd; }
   </style>
+  <script>
+    // Display any JavaScript error directly on the page
+    window.addEventListener("error", (e) => {
+      const box = document.createElement("pre");
+      box.style.cssText = "background:#fee;color:#900;padding:1rem;white-space:pre-wrap;border-radius:8px;";
+      box.textContent = "Erreur JavaScript : " + e.message + " (ligne " + e.lineno + ")";
+      document.body.prepend(box);
+    });
+  </script>
 </head>
 <body>
   <h1>Répertoire actuel</h1>
@@ -24,7 +33,7 @@
   <!-- Transition text between the two lists -->
   <section class="separator">
     <h2>À venir</h2>
-    <p>D'autres morceaux viendront rejoindre le répertoire actuel, à mesure que le chef d'orchestre réalise les arrangements et en fonction de l'avancement des morceaux en cours. Voici quelques exemples, parmi une grande sélection (toutes disponibles gratuitement en ligne).</p>
+    <p>D'autres morceaux viendront rejoindre le répertoire actuel, à mesure que le chef d'orchestre réalise les arrangements et en fonction de l'avancement des morceaux en cours. Voici quelques exemples, parmi une grande sélection (audios disponibles gratuitement en ligne).</p>
   </section>
 
   <!-- Second list: upcoming tracks -->
@@ -43,7 +52,7 @@
     // Upcoming tracks
     const upcomingTracks = [
       { title: "Down to Earth", artist: "Murray Gold - season 5", id: "0HY351FS64I" },
-      { title: "Fish custard", artist: "Murray Gold - season 5", id: "2mRnuMfHpOk" }
+      { title: "Fish custard", artist: "Murray Gold - season 5", id: "2mRnuMfHpOk" },
       { title: "Never tell me the rules", artist: "Murray Gold - 2013", id: "1OA1yvM7w7w" },
       { title: "Vale Decem", artist: "Murray Gold - season 4", id: "IAeu7_jRySA" },
       { title: "The runaway bride", artist: "Murray Gold - season 3", id: "MNDZXPre-cQ" }
